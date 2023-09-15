@@ -1,0 +1,60 @@
+<!-- # I wrote this code -->
+{% extends "./top.html" %}
+{% load bootstrap4 %}
+{% block content %}
+{% if user.is_authenticated %}
+    <!-- just for the images -->
+    <script>
+        setInterval(function() {
+        console.log("Hey");
+        const req = new XMLHttpRequest();
+        req.onreadystatechange = function(){
+            if (req.readyState === 4) {
+                console.log("Got Data")
+                html = "<table><tr>";
+                data = JSON.parse(req.response)
+                data.forEach(function(obj){                  
+                    if (obj.user == "{{user_name}}"){
+                        html += "<div class='vertical' ><img class='image_item' src=\""+obj.image +"\"><p>"+obj.name+"</p></div>"
+                    };                    
+                });
+                html += "</tr></table>";
+                document.getElementById("pro_images").innerHTML = html ;
+            }            
+        };
+        req.open("GET", "/api/images/");
+        req.send();
+        }, 5000);
+    </script>
+   
+    <h1>Profile of {{user_name}}</h1>
+    <p>Name: {{user_name}}</p>
+    <p>Organization: {{user_organisation}}</p>
+    <p>Status: {{user_status}}</p>
+    <div class="horizontal">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src=../images/{{user_photo}} alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{user_name}}</h5>
+                <p class="card-text">Status: {{user_status}}</p>
+                <form id="friend_request_form" method="post" action="/friend_request/">
+                    {% csrf_token %}
+                    <input type="hidden" name="profile_userName" value={{user_name}} size="1256" />
+                    <button class="btn btn-dark">Send friend request</button>
+                </form>   
+            </div>                  
+        </div>
+        <div class="greater_area">
+            <h3>{{user_name}}'s memories and adventures</h3>
+            <div class="image_area" id="pro_images">                 
+            </div>
+        </div> 
+    </div>
+    <hr>
+    <div class="horizontal_reverse">
+        <a class="btn btn-outline-dark" href="../people/" >Back to "friends"</a>
+    </div>        
+{% endif %}        
+{% endblock %}
+
+<!-- # end of code I wrote  -->

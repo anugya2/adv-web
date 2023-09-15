@@ -1,0 +1,72 @@
+<!-- # I wrote this code -->
+{% extends './top.html' %}
+{% block content %}
+    {% if user.is_authenticated %}    
+    <div class="memories_area">
+        <div class="horizontal">  
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="../images/home_card.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Your Homepage</h5>
+                    <p class="card-text">Register and start creating a network of friend. Chat with friends and share photos and memories.</p>
+                    <a href="../home/" class="btn btn-dark">Home</a>
+                </div>                  
+            </div>    
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="../images/people_card.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">People and friends</h5>
+                    <p class="card-text">If you are already registered, login and begin forming network, chat with friends and share photos and memories.</p>
+                    <a href="../people/" class="btn btn-dark">Friends</a>
+                </div>                  
+            </div>
+            <div class="vertical">
+                <a href="/api/userData/{{pk}}" class="btn btn-outline-secondary" style="padding: 5px; margin: 15px;">Get your User Data: API ENDPOINT</a>
+                <a href="/api/friendshipData/{{pk}}" class="btn btn-outline-secondary" style="padding: 5px; margin: 15px;">Get your Friendship Data: API ENDPOINT</a>
+            </div>
+        </div>
+    </div>
+    
+    {% else %}
+    <div class="horizontal">  
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="../images/register_card.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Register</h5>
+                <p class="card-text">Register and start creating a network of friend. Chat with friends and share photos and memories.</p>
+                <a href="../register/" class="btn btn-dark">Register here</a>
+            </div>                  
+        </div>    
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="../images/login_card.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Login</h5>
+                <p class="card-text">If you are already registered, login and begin forming network, chat with friends and share photos and memories.</p>
+                <a href="../login/" class="btn btn-dark">Login here</a>
+            </div>                  
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}
+
+<!-- # end of code I wrote  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
