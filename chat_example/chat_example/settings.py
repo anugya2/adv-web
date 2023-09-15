@@ -4,11 +4,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-rr-60h*&j6=c)1snuz-lo8-8j8%_(to7ef&v4&&a1^3%y83k7^"
 
-DEBUG = True
+DEBUG = False
 
 # I wrote this code
 INSTALLED_APPS = [
-    # "daphne", #uncomment this for newer version of channels    
+    # "daphne", #uncomment this for newer version of channels
     'rest_framework',
     "jquery",
     "channels",
@@ -89,9 +89,10 @@ USE_TZ = True
 # I wrote this code
 ALLOWED_HOSTS = [
     'localhost',
-    '127.0.0.1',    
+    '127.0.0.1',
+    'An1234.pythonanywhere.com',
 ]
-STATIC_URL = "/static/" #template for path of static assets 
+STATIC_URL = "/static/" #template for path of static assets
 MEDIA_ROOT = "images"
 MEDIA_URL = "/images/"
 # end of code I wrote
